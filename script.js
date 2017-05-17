@@ -1,10 +1,17 @@
 $(document).ready(main);
 
 function main(){
-	var box1Show=true;
-	var box2Show=true;
+	var box1Show=false;
+	var box2Show=false;
 	var box1Clicked=false;
 	var box2Clicked=false;
+	
+	//default conditions
+	if(!box1Show)
+		$(".box1").hide();
+	if(!box2Show)
+		$(".box2").hide();
+		
 	
 	//adding textboxes to chat area
 	$("input").change(function(){
@@ -45,9 +52,9 @@ function main(){
 	});
 	
 	//opening up a chatbox
-	$(".contacts span").click(function(){
-		var clicked=$(this).text();
-		if(clicked=="name1"){
+	$(".contacts").click(function(){
+		var clicked=$(this).children(".names").text();
+		if(clicked=="name1" && !box1Show){
 			box1Show=true;
 			if(box2Show){
 				$(".box1").css({"top":"-43.5%","left":"30%"});
@@ -57,10 +64,14 @@ function main(){
 				$(".box1").css({"top":"-43.5%","left":"55%"});
 			$(".box1").show();
 		}
-		else if(clicked=="name2"){
+		else if(clicked=="name2" && !box2Show){
 			box2Show=true;
-			if(box1Show)
-				$(".box2").css({"top":"93.5%","left":"30%"});
+			if(box1Show){
+				$(".box2").css({"top":"-93.5%","left":"30%"});
+				$(".box1").css({"top":"-43.5%","left":"55%"});
+			}
+			else
+				$(".box2").css({"top":"-43.5%","left":"55%"});
 			$(".box2").show();
 		}
 	});
@@ -71,12 +82,16 @@ function main(){
 		if($(this).attr("class")=="chatbox box1")
 		{
 			box1Clicked=true;
+			box2Clicked=false;
 			$("input[name=\"user_input1\"]").focus();
+			$(".box2 h3").css("background-color","white");
 		}
 		else
 		{
 			box2Clicked=true;
+			box1Clicked=false;
 			$("input[name=\"user_input2\"]").focus();
+			$(".box1 h3").css("background-color","white");
 		}
 	});
 	$(document).click(function(event) { 
