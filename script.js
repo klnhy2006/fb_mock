@@ -1,6 +1,7 @@
 $(document).ready(main);
 
-function main(){
+function main()
+{
 	var box1Show=false;
 	var box2Show=false;
 	var box1Clicked=false;
@@ -11,31 +12,36 @@ function main(){
 		$(".box1").hide();
 	if(!box2Show)
 		$(".box2").hide();
-		
 	
-	//adding textboxes to chat area
-	$("input").change(function(){
-		if($(this).attr("name")=="user_input1")
+	//adding textboxes to chat area	
+	$(".user_input1,.user_input2").keydown(function(key)
+	{
+		if(key.keyCode=="13")
 		{
-			var toAdd=$("input[name=\"user_input1\"]").val();
-			var newElement=$("<br/>"+"<div class=\"chat owner\">"+toAdd+"</div>");
-			newElement.insertBefore(".chat_push1");
-			newElement=$("<br/>"+"<div class=\"chat other\">"+toAdd+"</div>");
-			newElement.insertBefore(".chat_push2");
-			$("input[name=\"user_input1\"]").val(""); //to clear input box
-		}
-		else 
-		{
-			var toAdd=$("input[name=\"user_input2\"]").val();
-			var newElement=$("<br/>"+"<div class=\"chat owner\">"+toAdd+"</div>");
-			newElement.insertBefore(".chat_push2");
-			newElement=$("<br/>"+"<div class=\"chat other\">"+toAdd+"</div>");
-			newElement.insertBefore(".chat_push1");
-			$("input[name=\"user_input2\"]").val("");
-		}
-		$('.chatarea1').scrollTop($('.chatarea1')[0].scrollHeight);
-		$('.chatarea2').scrollTop($('.chatarea2')[0].scrollHeight);
+			key.preventDefault();
+			if($(this).attr("class")=="user_input1")
+			{
+				var toAdd=$(".user_input1").val();
+				var newElement=$("<br/>"+"<div class=\"chat owner\">"+toAdd+"</div>");
+				newElement.insertBefore(".chat_push1");
+				newElement=$("<br/>"+"<div class=\"chat other\">"+toAdd+"</div>");
+				newElement.insertBefore(".chat_push2");
+				$(".user_input1").val(""); //to clear input box
+			}
+			else 
+			{
+				var toAdd=$(".user_input2").val();
+				var newElement=$("<br/>"+"<div class=\"chat owner\">"+toAdd+"</div>");
+				newElement.insertBefore(".chat_push2");
+				newElement=$("<br/>"+"<div class=\"chat other\">"+toAdd+"</div>");
+				newElement.insertBefore(".chat_push1");
+				$(".user_input2").val("");
+			}
+			$('.chatarea1').scrollTop($('.chatarea1')[0].scrollHeight);
+			$('.chatarea2').scrollTop($('.chatarea2')[0].scrollHeight);
+		}		
 	});
+	
 	
 	//closing a chatbox
 	$(".close").click(function(){
@@ -83,14 +89,14 @@ function main(){
 		{
 			box1Clicked=true;
 			box2Clicked=false;
-			$("input[name=\"user_input1\"]").focus();
+			$(".user_input1").focus();
 			$(".box2 h3").css("background-color","white");
 		}
 		else
 		{
 			box2Clicked=true;
 			box1Clicked=false;
-			$("input[name=\"user_input2\"]").focus();
+			$(".user_input2").focus();
 			$(".box1 h3").css("background-color","white");
 		}
 	});

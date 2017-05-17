@@ -60,20 +60,23 @@ body{
 	margin-left:2%;
 }
 .names{
-	background-color:yellow;
 	display:inine-block;
 	position:absolute;
 	top:17px;
 	left:50px;
 }
-.dots{
+.dots,.last_active{
 	color:#42B72A;
 	position:absolute;
 	right:2%;
 	top:35%;
 	font-size:150%;
 }
-
+.last_active{
+	color:grey;
+	font-size:100%;
+	right:4%;
+}
 
 
 
@@ -160,7 +163,7 @@ body{
 	width:0px;
 	height:0px;
 	border: 10px solid;
-	border-color: transparent transparent transparent white;
+	border-color: transparent transparent transparent #4080FF;
 	right:-21px;	
 }
 .other{
@@ -184,18 +187,20 @@ body{
 	background-color:white;
 	box-sizing:border-box;
 }
-input{
+.user_input1,.user_input2{
 	width:100%;
 	height:100%;
-	border:none;
+	border-style:none;
 	border-top:1px solid lightgrey;
 	padding:4% 0 4% 3%;
 	box-sizing:border-box;
+	resize:none;
+	background-color:white;
 }
-input:focus{
+.user_input1:focus,.user_input2:focus{
 	outline:none;
 }
-input::-webkit-input-placeholder{
+.user_input1::-webkit-input-placeholder,.user_input2::-webkit-input-placeholder{
 	color:lightgrey;
 	opacity:0.7;
 }
