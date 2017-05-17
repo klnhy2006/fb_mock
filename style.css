@@ -152,24 +152,17 @@ body{
 	border-radius:7px;
 	position:relative;
 	display:inline-block;
+	float:right;
 	padding:5px;
-	margin:5px 3px 3px 3px;
+	margin:5px 5px 3px 3px;
 	clear:both;
 	box-sizing:border-box;
 }
-.owner:after{
-	content:"";
-	position:absolute;
-	width:0px;
-	height:0px;
-	border: 10px solid;
-	border-color: transparent transparent transparent #4080FF;
-	right:-21px;	
-}
 .other{
-	margin:3px 22px;
+	margin:3px 25px;
 	background-color:#F1F1F1;
 	color:black;
+	float:left;
 }
 .other:before{
 	content:"";
